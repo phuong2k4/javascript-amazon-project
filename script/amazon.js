@@ -79,7 +79,15 @@ document.querySelectorAll(".cart-js-event").forEach((btn)=>{
                 quantity:1
             })
         }
-        console.log(cart)
+
+        let quantityCount = 0;
+        cart.forEach((item)=>{
+            quantityCount +=item.quantity
+        })
+
+        document.querySelector(".cart-quantity")
+        .innerHTML = quantityCount
+        console.log(quantityCount)
     })
 })
 
