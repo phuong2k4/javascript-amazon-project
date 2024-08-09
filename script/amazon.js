@@ -1,5 +1,6 @@
-import { cart as mCart } from "../data/cart.js";
-// const mCart = [];
+import { cart } from "../data/cart.js";
+import { products } from "../data/products.js";
+//
 var productHTML = ''
 products.forEach((item)=>{
     const html = 
