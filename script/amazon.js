@@ -1,5 +1,5 @@
-
-
+import { cart as mCart } from "../data/cart.js";
+// const mCart = [];
 var productHTML = ''
 products.forEach((item)=>{
     const html = 
