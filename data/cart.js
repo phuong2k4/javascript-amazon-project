@@ -62,3 +62,15 @@ export function updateQuantity(productId,newQuantity){
     })
     saveCart()
 }
+
+export function updateDeliveryOptions(productId, deliveryOptionId){
+    var matchingItem;
+    cart.forEach((product)=>{
+        if(productId===product.productId){
+            matchingItem = product;
+        }
+    })
+
+    matchingItem.deliveryOptionId = deliveryOptionId;
+    saveCart()
+}
