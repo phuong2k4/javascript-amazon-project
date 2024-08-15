@@ -13,18 +13,22 @@ export function renderPayment(){
         shippingPrice += deliveryOption.priceCents
     })
 
+
     const totalBeforeTax = productPriceCents + shippingPrice;
     const taxCents = totalBeforeTax * 0.1;
     const totalCents = totalBeforeTax + taxCents;
-
-
+    
+    let quantity = 0;
+    cart.forEach((item)=>{
+        quantity += item.quantity;
+    })
     const paymentSummaryHtml = `
         <div class="payment-summary-title">
             Order Summary
         </div>
 
         <div class="payment-summary-row">
-        <div>Items (3):</div>
+        <div>Items (${quantity}):</div>
         <div class="payment-summary-money">$${formatCurrency(productPriceCents)}</div>
         </div>
 
