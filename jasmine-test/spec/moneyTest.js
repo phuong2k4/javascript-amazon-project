@@ -20,4 +20,8 @@ describe('Test Suite: FormatCurrency function', ()=>{
     // it('-Test Jasmine work correctly-',()=>{
     //     expect(formatCurrency(0)).toEqual('1')
     // })
+
+    it('-Test with a negative number-', ()=>{
+        expect(formatCurrency(-1000)).toEqual('-10.00')
+    })
 })

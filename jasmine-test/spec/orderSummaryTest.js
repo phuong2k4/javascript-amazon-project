@@ -31,6 +31,11 @@ describe("-Test Suite: renderOrderSummary Function", ()=>{
         renderOrderSummary();
     })
 
+    afterEach(()=>{
+        document.querySelector(".js-test-container").innerHTML = `
+
+        `;
+    })
     it("-Display the cart-", ()=>{
 
         expect(
@@ -63,9 +68,7 @@ describe("-Test Suite: renderOrderSummary Function", ()=>{
         expect(cart.length).toEqual(1);
         expect(cart[0].productId).toEqual(productId2);
 
-        document.querySelector(".js-test-container").innerHTML = `
 
-        `;
 
     })
 
