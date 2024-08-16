@@ -17,7 +17,7 @@ describe('Test Suite: FormatCurrency function', ()=>{
         expect(formatCurrency(2000.4)).toEqual('20.00')
     })
 
-    it('-Test Jasmine work correctly-',()=>{
-        expect(formatCurrency(0)).toEqual('1')
-    })
+    // it('-Test Jasmine work correctly-',()=>{
+    //     expect(formatCurrency(0)).toEqual('1')
+    // })
 })
