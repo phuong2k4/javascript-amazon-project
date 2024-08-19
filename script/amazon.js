@@ -1,10 +1,10 @@
-import { cart, addCart,updateCartQuantity } from "../data/cart.js";
+import { cart, addCart,updateQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./util/money.js";
 
 
 var productHTML = ''
-updateCartQuantity()
+updateQuantity()
 products.forEach((item)=>{
     const html = 
     `
@@ -20,14 +20,14 @@ products.forEach((item)=>{
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${item.rating.stars*10}.png">
+              src="${item.getStarURL()}">
             <div class="product-rating-count link-primary">
               ${item.rating.count}
             </div>
           </div>
 
           <div class="product-price">
-            $${formatCurrency(item.priceCents)}
+            ${item.getPrice()}
           </div>
 
           <div class="product-quantity-container">
@@ -65,13 +65,17 @@ products.forEach((item)=>{
 const gridProduct = document.querySelector(".product-grid-js")
 gridProduct.innerHTML = productHTML;
 
+function cart_quantity(){
+  document.querySelector(".cart-quantity").innerHTML = cart.length;
+}
 
 document.querySelectorAll(".cart-js-event").forEach((btn)=>{
     btn.addEventListener('click',()=>{
         const productId = btn.dataset.productId;
         addCart(productId)
-
-        updateCartQuantity();
+        cart_quantity()
+        updateQuantity();
     })
 })
 
+cart_quantity()
