@@ -92,6 +92,17 @@ const object3 = {
 object3.method()
 */
 
+export function getProduct(productId){
+  let matchingProduct;
+  products.forEach((productItem)=>{
+      if(productId===productItem.id){
+          matchingProduct = productItem;
+      }
+  })
+  return matchingProduct;
+}
+
+/*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -764,14 +775,30 @@ export const products = [
     return new Product (product)
   }
 })
+*/
 
+export let products = [];
 
-export function getProduct(productId){
-  let matchingProduct;
-  products.forEach((productItem)=>{
-      if(productId===productItem.id){
-          matchingProduct = productItem;
+export function LoadProducts(func){
+  const xhr = new XMLHttpRequest();
+
+  xhr.open('get', 'https://supersimplebackend.dev/products');
+
+  xhr.addEventListener('load', ()=>{
+    products = JSON.parse(xhr.response).map((product)=>{
+      if(product.type==='clothing'){
+        return new Clothing (product)
+      }else if(product.keywords
+        .some((key) => key === 'appliances')){
+        return new Appliances(product)
+      }else{
+        return new Product (product)
       }
+    })
+    func()
   })
-  return matchingProduct;
+
+  xhr.send();
 }
+
+LoadProducts();
