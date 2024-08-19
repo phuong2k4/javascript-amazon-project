@@ -41,7 +41,38 @@ class Clothing extends Product {
       <a href="${this.sizeChartLink}" target="_blank">Size chart</a>
     `
   }
+  
 }
+
+/*
+const date = new Date();
+const time = date.toLocaleTimeString()
+console.log(date)
+console.log(time)
+
+const object2 = {
+  a: 2,
+  b: this.a,
+}
+
+
+function logThis(){
+  console.log(this)
+}
+logThis()
+logThis.call('hello');
+
+const object3 = {
+  method(){
+    console.log(this);
+
+    [1,2,3].forEach(()=>{
+      console.log(this)
+    })
+  }
+}
+object3.method()
+*/
 
 export const products = [
   {
