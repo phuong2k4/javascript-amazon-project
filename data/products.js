@@ -802,3 +802,31 @@ export function LoadProducts(func){
 }
 
 LoadProducts();
+
+export function LoadProductFetch(){
+  const promise = fetch('https://supersimplebackend.dev/products')
+  .then((res)=>{
+    if(!res.ok){
+      throw new Error("Status response wasn't ok, try again!")
+    }
+    return res.json();
+  }).then((data)=>{
+    products = data.map((product)=>{
+      if(product.type==='clothing'){
+        return new Clothing (product)
+      }else if(product.keywords
+        .some((key) => key === 'appliances')){
+        return new Appliances(product)
+      }else{
+        return new Product (product)
+      }
+    })
+  }).catch((error)=>{
+    console.log(error)
+  });
+  return promise;
+}
+
+// LoadProductFetch().then(() => {
+//   func()
+// })
