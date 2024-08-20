@@ -9,16 +9,21 @@ import { LoadProductFetch } from "../data/products.js";
 // import '../data/backend-practice.js'
 
 async function LoadPage(){
-    await LoadProductFetch();
-    const value = await new Promise((resolve)=>{
-        LoadCart(()=>{
-            resolve()
+    try{
+        // throw new Error ("Duuuuuuuuuuu")
+        await LoadProductFetch();
+        const value = await new Promise((resolve)=>{
+            LoadCart(()=>{
+                resolve()
+            })
         })
-    })
-    
-    renderCheckoutHeader();
-    renderOrderSummary();
-    renderPayment();
+    }catch(error){
+        console.log("Error: Promise status can't return 'Fulfilled' /", error.message)
+    }finally{
+        renderCheckoutHeader();
+        renderOrderSummary();
+        renderPayment();
+    }
 }
 LoadPage();
 

@@ -798,6 +798,10 @@ export function LoadProducts(func){
     func()
   })
 
+  xhr.addEventListener("error",()=>{
+    console.log('Unexpected error. Please try again later!')
+  })
+
   xhr.send();
 }
 
@@ -822,9 +826,9 @@ export function LoadProductFetch(){
         return new Product (product)
       }
     })
-  }).catch((error)=>{
-    console.log(error)
-  });
+  })/*.catch((error)=>{
+    console.log("Api Doesnt exsits!",error.message)
+  })*/
   return promise;
 }
 
