@@ -811,6 +811,7 @@ export function LoadProductFetch(){
     }
     return res.json();
   }).then((data)=>{
+    console.log("Load Product Complete!")
     products = data.map((product)=>{
       if(product.type==='clothing'){
         return new Clothing (product)

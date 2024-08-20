@@ -8,6 +8,21 @@ import { LoadProductFetch } from "../data/products.js";
 // import '../data/car.js'
 // import '../data/backend-practice.js'
 
+async function LoadPage(){
+    await LoadProductFetch();
+    const value = await new Promise((resolve)=>{
+        LoadCart(()=>{
+            resolve()
+        })
+    })
+    
+    renderCheckoutHeader();
+    renderOrderSummary();
+    renderPayment();
+}
+LoadPage();
+
+/*
 Promise.all([
     LoadProductFetch(),
     new Promise((resolve)=>{
@@ -20,7 +35,7 @@ Promise.all([
     renderOrderSummary()
     renderPayment()
 })
-
+*/
 // new Promise ((resolve)=>{
 //     LoadProducts(()=>{
 //         resolve();
